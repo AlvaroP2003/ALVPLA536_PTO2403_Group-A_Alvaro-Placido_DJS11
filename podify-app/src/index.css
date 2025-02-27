@@ -91,6 +91,10 @@ header {
   height: 10vh;
 }
 
+header > * {
+  cursor: pointer;
+}
+
 header .search_container {
   background-color: var(--highlight);
 }
@@ -126,6 +130,7 @@ header .navbar {
 }
 
 header .link {
+  position: relative;
   color: white;
   text-decoration: none;
 
@@ -137,7 +142,35 @@ header .link:hover {
 }
 
 header .link:first-child {
-  border-right: solid white 2px;
+  border-right: solid rgba(255, 255, 255, 0.562) 1px;
+}
+
+header .user:hover .clear-history {
+  display: block;
+}
+
+header .clear-history {
+  display: none;
+  position: absolute;
+
+  transform: translateX(-50%);
+  left: 50%;
+  top: 100%;
+
+  font-size:1rem;
+  z-index: 5;
+
+  background-color: var(--accent-background);
+  color: white;
+  white-space: nowrap;
+  border: none;
+  border-radius: 50px;
+
+  padding: 1rem;
+}
+
+header .clear-history:hover {
+  background-color: rgb(252, 63, 63);
 }
 
 .search-sort__container {

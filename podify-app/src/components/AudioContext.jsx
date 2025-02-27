@@ -26,13 +26,6 @@ export const AudioProvider = ({ children }) => {
             const sameEpisode = audioState.activeEpisode.episode === episode.episode
       
         setSameElement(samePodcast && sameSeason && sameEpisode)
-
-
-        // console.log('pocast : ' , samePodcast)
-        // console.log('season : ' , sameSeason)
-        // console.log('episode : ' , sameEpisode)
-
-        console.log(sameElement)
     }
 
     }, [podcast, seasonInput, episode, playing])
@@ -41,11 +34,6 @@ export const AudioProvider = ({ children }) => {
     const playAudio = (podcast, se, ep) => {
 
         // Play new cast
-        console.log(podcast)
-        console.log(se)
-        console.log(ep)
-        console.log(sameElement)
-
         if(podcast && se >= 0 && ep && !sameElement) {
             audioRef.current.pause()
             audioRef.current.currentTime = 0

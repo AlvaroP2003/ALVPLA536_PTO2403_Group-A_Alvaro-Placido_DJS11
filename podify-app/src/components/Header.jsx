@@ -8,6 +8,10 @@ export default function Header() {
         color: "var(--accent-main)",
     }
 
+    const clearHistory = () => {
+        localStorage.clear()
+    }
+
     return (
         <>
             <header>
@@ -15,11 +19,19 @@ export default function Header() {
 
                 <ul className="navbar">
                     <NavLink className='link ' to='/'
-                    style={({ isActive }) => isActive ? activeStyles : null}>
-                    <li>HOME</li></NavLink>
+                        style={({ isActive }) => isActive ? activeStyles : null}>
+                        HOME
+                    </NavLink>
+
                     <NavLink className="link" to='favourites'
-                    style={({ isActive }) => isActive ? activeStyles : null}>
-                    <li>FAVOURTIES</li></NavLink>
+                        style={({ isActive }) => isActive ? activeStyles : null}>
+                        FAVOURTIES
+                    </NavLink>
+
+                    <li className="link user">
+                        <p>USER</p>
+                        <button className="clear-history" onClick={() => {clearHistory()}}>Reset Account</button>
+                    </li>
                 </ul>
             </header>
         </> 

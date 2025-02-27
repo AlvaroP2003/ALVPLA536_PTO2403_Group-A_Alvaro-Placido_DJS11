@@ -38,16 +38,16 @@ export default function AudioPlayer() {
                     <h3>{audioState.activePodcast.title}</h3>
                 </div>
             </div>
-            <audio ref={audioRef} id="music-bar"></audio>
+            <audio ref={audioRef} id="music-bar" controls ></audio>
 
             <div className="audio-container">
-                <div className="audio-btn">
+                {/* <div className="audio-btn">
                     <button className="prev-btn">prev</button>
                     <button className="play-pause-btn" onClick={() => {playing ? pauseAudio() :  playAudio(audioState.activePodcast, audioState.activeSeason, audioState.activeEpisode)}}>
                         {playing ? "Pause" : "Play"}
                     </button>
                     <button className="next-btn">next</button>
-                </div>
+                </div> */}
 
                 <div className="progress-container">
                     <p className="current-time">{currentTime ? currentTime.toFixed(0) : '0'}</p>

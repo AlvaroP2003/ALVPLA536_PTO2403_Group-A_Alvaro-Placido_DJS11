@@ -179,7 +179,7 @@ export default function HomePage() {
         <section className="homepage__section">
             <div className="search-sort__container">
             <div className="search_container">
-                    <input type="text" className="user-search" onChange={handleSearchChange}></input>
+                    <input type="text" className="user-search"  placeholder ='Search Podcast...' onChange={handleSearchChange}></input>
                     {/* Research Levenshtein Distance Algorithm for fuzzy search matching */}
             </div>
 
