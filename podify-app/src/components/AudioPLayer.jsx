@@ -5,7 +5,6 @@ import PodcastDetail from "./Pages/PodcastDetail";
 
 export default function AudioPlayer() {
     const { audioRef, playing, pauseAudio, playAudio, audioState } = useAudio();
-    const {podcast, setPodcast, season, setSeason, episode, setEpisode, seasonInput, addToCompleted} = useEpisode()
 
     const [currentTime, setCurrentTime] = useState(0)
     const [duration, setDuration] = useState(0)
@@ -39,7 +38,7 @@ export default function AudioPlayer() {
                     <h3>{audioState.activePodcast.title}</h3>
                 </div>
             </div>
-            <audio ref={audioRef} preload="metadata" id="music-bar"></audio>
+            <audio ref={audioRef} id="music-bar"></audio>
 
             <div className="audio-container">
                 <div className="audio-btn">

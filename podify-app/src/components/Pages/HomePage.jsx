@@ -115,7 +115,6 @@ export default function HomePage() {
         item.shows
     ))
 
-
     // Returns a new object to make rendering, filtering and sorting easier
     const podcastGenre = sortedPodcast.map(podcast => {
         return {
@@ -126,7 +125,8 @@ export default function HomePage() {
                 return show.includes(podcast.id) ? genre[index].title : null
            })
            .filter(title => title !== null)
-           .join(', ')
+           .join(', '),
+           'seasons' : podcast.seasons
         }
     })
 
@@ -158,6 +158,7 @@ export default function HomePage() {
             <h3>
               {podcast.genre}
             </h3>
+            <p>{podcast.seasons} {podcast.seasons === 1 ? 'Season' : 'Seasons'}</p>
         </Link>
     ))
 

@@ -25,42 +25,52 @@ export const AudioProvider = ({ children }) => {
             const sameSeason = audioState.activeSeason === seasonInput
             const sameEpisode = audioState.activeEpisode.episode === episode.episode
       
-        if(samePodcast && sameSeason && sameEpisode) {
-            setSameElement(true)
-        } else setSameElement(false)
+        setSameElement(samePodcast && sameSeason && sameEpisode)
 
+
+        // console.log('pocast : ' , samePodcast)
+        // console.log('season : ' , sameSeason)
+        // console.log('episode : ' , sameEpisode)
+
+        console.log(sameElement)
     }
 
     }, [podcast, seasonInput, episode, playing])
 
+
     const playAudio = (podcast, se, ep) => {
+
+        // Play new cast
+        console.log(podcast)
+        console.log(se)
+        console.log(ep)
+        console.log(sameElement)
+
+        if(podcast && se >= 0 && ep && !sameElement) {
+            audioRef.current.pause()
+            audioRef.current.currentTime = 0
+
+            audioRef.current.src = podcast ? podcast.seasons[se].episodes[ep.episode -1].file : null
+            audioRef.current.load()
+            console.log('new cast')
+
+            audioRef.current.play()
+            setPlaying(true)
+        }
 
         setAudioState({
             activePodcast : podcast,
             activeSeason : se,
             activeEpisode : ep,
         })
-
-        // PLay new cast
-        if(podcast && !sameElement) {
-            audioRef.current.src = podcast ? podcast.seasons[se].episodes[ep.episode -1].file : null
-            audioRef.current.load()
-            console.log('new cast')
-        }
-
-        audioRef.current.play()
-        setPlaying(true)
-
-
-        // Setting new active state for song
     }
+
     const pauseAudio = () => {
-        if(audioRef.current) {
             console.log('pause')
             audioRef.current.pause()
             setPlaying(false)
-        }
     }
+    
 
     return (
         <AudioContext.Provider value={{
