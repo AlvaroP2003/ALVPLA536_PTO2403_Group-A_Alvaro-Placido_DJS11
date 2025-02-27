@@ -76,7 +76,6 @@ export const EpisodeProvider = ({children}) => {
     }
 
     const isFavourite = (castId, se, ep) => {
-        if(!ep) return false
         return favourite.some(item =>
             item.podcast.id === castId &&
             item.season === se &&

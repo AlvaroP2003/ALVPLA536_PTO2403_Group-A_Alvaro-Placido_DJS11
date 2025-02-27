@@ -5,7 +5,7 @@ import { useEpisode } from "./EpisodeContext";
 const AudioContext = createContext();
 
 export const AudioProvider = ({ children }) => {
-    const audioRef = useRef(new Audio());
+    const audioRef = useRef(null);
     const [playing, setPlaying] = useState(false);
 
     const { podcast, seasonInput, episode  } = useEpisode()
@@ -26,31 +26,37 @@ export const AudioProvider = ({ children }) => {
             const sameEpisode = audioState.activeEpisode.episode === episode.episode
       
         setSameElement(samePodcast && sameSeason && sameEpisode)
-    }
+
+        }
 
     }, [podcast, seasonInput, episode, playing])
 
 
     const playAudio = (podcast, se, ep) => {
 
+        setAudioState({
+            activePodcast : podcast,
+            activeSeason : se,
+            activeEpisode : ep,
+        })
+
         // Play new cast
-        if(podcast && se >= 0 && ep && !sameElement) {
+        if(audioRef.current && !sameElement) {
             audioRef.current.pause()
             audioRef.current.currentTime = 0
 
             audioRef.current.src = podcast ? podcast.seasons[se].episodes[ep.episode -1].file : null
             audioRef.current.load()
             console.log('new cast')
-
-            audioRef.current.play()
-            setPlaying(true)
         }
 
-        setAudioState({
-            activePodcast : podcast,
-            activeSeason : se,
-            activeEpisode : ep,
-        })
+        if(audioRef.current) {
+            audioRef.current.play()
+            setPlaying(true)
+            console.log('play')
+            console.log(sameElement)
+        }
+
     }
 
     const pauseAudio = () => {

@@ -16,9 +16,23 @@
   --font-third : #DEDEDE;
 }
 
+.delete-btn {
+  background-color: var(--accent-background);
+  color: white;
+  white-space: nowrap;
+  border: none;
+  border-radius: 50px;
+
+  padding: 1rem;
+}
+
+.delete-btn:hover {
+  background-color: rgb(252, 63, 63);
+}
+
 body {
   background: rgb(38,90,152);
-background: linear-gradient(180deg, rgba(38,90,152,1) 0%, rgba(54,94,140,1) 22%, rgba(0,0,0,1) 100%);
+  background: linear-gradient(180deg, rgba(38,90,152,1) 0%, rgba(54,94,140,1) 22%, rgba(0,0,0,1) 100%);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
@@ -77,6 +91,25 @@ section {
 .main-audio img {
   height: 100%;
   border-radius: 15px;
+}
+
+.play-pause-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+
+  background-color: var(--accent-main);
+  border: none;
+  color: white;
+}
+
+.main-audio .play-pause-btn {
+  background-color: var(--background-secondary);
+  border: solid white 2px;
 }
 
 header {
@@ -159,18 +192,6 @@ header .clear-history {
 
   font-size:1rem;
   z-index: 5;
-
-  background-color: var(--accent-background);
-  color: white;
-  white-space: nowrap;
-  border: none;
-  border-radius: 50px;
-
-  padding: 1rem;
-}
-
-header .clear-history:hover {
-  background-color: rgb(252, 63, 63);
 }
 
 .search-sort__container {
@@ -484,6 +505,13 @@ header .clear-history:hover {
 .episode-modal .star {
   height: 50px;
   width: 50px;
+
+  background: none;
+  border: none;
+}
+
+.episode-modal .star:active {
+  transform: scale(1.1)
 }
 
 .audio-container {

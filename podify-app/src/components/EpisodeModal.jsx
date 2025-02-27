@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useEpisode } from "./EpisodeContext";
 import { useAudio } from "./AudioContext";
 
+import { Pause, Play, Star } from 'lucide-react'
+
 export default function EpisodeModal({podcast, seasonInput, episode, modalOpen, setModalOpen}) {
 
     const {playing, pauseAudio, playAudio, sameElement} = useAudio()
@@ -29,13 +31,13 @@ export default function EpisodeModal({podcast, seasonInput, episode, modalOpen, 
                 <h3>From : {podcast.title}</h3>
                 </div>
 
-                <button className="star" onClick ={() => {onFavourite(podcast.id)}}>*</button>
+                <button className="star" onClick ={() => {onFavourite(podcast.id)}}>{favourite ? <Star size={40} strokeWidth={1} stroke = 'none' fill="white" /> : <Star size={40} strokeWidth={1} stroke="white"/> }</button>
             </div> 
 
             <div className="audio-container">
                     <div className="audio-btn">
-                        <button className="play-pause-btn" onClick={() => {playing ? pauseAudio() :  playAudio(podcast, seasonInput, episode)}}>
-                            {playing && sameElement ? 'Pause' : 'Play'}
+                        <button className="play-pause-btn" onClick={() => {playing && sameElement ? pauseAudio() :  playAudio(podcast, seasonInput, episode)}}>
+                        {playing && sameElement ? <Pause size={30} strokeWidth={1}/> : <Play size={30} strokeWidth={1} /> }
                         </button>
                     </div>
             </div>

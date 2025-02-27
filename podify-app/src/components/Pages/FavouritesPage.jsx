@@ -84,7 +84,7 @@ export default function FavouritesPage() {
             <div className='favourites-header'>
                 <div>
                     <h1>Your Favourites</h1>
-                    <button className="clear-favourite__btn" onClick={() => {clearFavourites()}}>Clear Favourites</button>
+                    <button className="delete-btn" onClick={() => {clearFavourites()}}>Clear Favourites</button>
                 </div>
 
                 <select value={sortValue} onChange={handleChange}>

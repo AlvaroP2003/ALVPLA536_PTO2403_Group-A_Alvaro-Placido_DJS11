@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
+import { CircleUserRound } from 'lucide-react'
 
 
 export default function Header() {
@@ -27,12 +28,14 @@ export default function Header() {
                         style={({ isActive }) => isActive ? activeStyles : null}>
                         FAVOURTIES
                     </NavLink>
-
-                    <li className="link user">
-                        <p>USER</p>
-                        <button className="clear-history" onClick={() => {clearHistory()}}>Reset Account</button>
-                    </li>
                 </ul>
+
+                <div className="link user">
+                        <p><CircleUserRound size={40} strokeWidth={1} /></p>
+                        <button className="delete-btn clear-history" onClick={() => {clearHistory()}}>Reset Account</button>
+                </div>
+
+
             </header>
         </> 
     )
