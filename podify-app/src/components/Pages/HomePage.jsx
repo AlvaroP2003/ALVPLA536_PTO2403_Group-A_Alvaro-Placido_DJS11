@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 
 import { useState, useEffect } from "react";
 import { NavLink,Link, useSearchParams } from "react-router-dom";
@@ -11,11 +11,17 @@ export default function HomePage() {
     const [searchParams, setSearchParams] = useSearchParams()
     const typeFilter = searchParams.get('type')
 
+    const [searchValue, setSearchValue] = useState('')
+
     const [podcast, setPodcast] = useState([])
     const [sortedPodcast, setSortedPodcast] = useState([])
     const [sortValue, setSortValue] = useState('a-z') 
 
     const [genre,setGenre] = useState([])
+
+    const handleSearchChange = (event) => {
+        setSearchValue(event.target.value)
+    }
 
     const handleChange = (event) => {
         setSortValue(event.target.value)
@@ -91,8 +97,6 @@ export default function HomePage() {
         }
 
         const fetchAllGenres = async () => {
-            setLoading(true)
-
             const genrePromise = []
 
             for(let i = 1 ; i <= 9 ; i++) {
@@ -102,7 +106,6 @@ export default function HomePage() {
             const results = await Promise.all(genrePromise)
 
             setGenre(results.filter((result) => result !== null))
-            setLoading(false)
         }
 
         fetchAllGenres()
@@ -116,27 +119,30 @@ export default function HomePage() {
     ))
 
     // Returns a new object to make rendering, filtering and sorting easier
-    const podcastGenre = sortedPodcast.map(podcast => {
+    const podcastGenre = useMemo(() => sortedPodcast.map(podcast => {
         return {
             'id' : podcast.id,
             'title' : podcast.title,
             'image' : podcast.image,
-            'genre' : genreShows.map((show,index) => {
-                return show.includes(podcast.id) ? genre[index].title : null
-           })
-           .filter(title => title !== null)
+            'genre' : genreShows
+                    .map((show,index) => 
+                        show.includes(podcast.id) ? genre[index].title : null
+           )
+           .filter(Boolean)
            .join(', '),
            'seasons' : podcast.seasons
         }
-    })
+    }), [sortedPodcast,genre])
 
 
 
     // Filter Functions 
 
-    const filteredPodcast = typeFilter ?
-        podcastGenre.filter(cast => cast.genre.includes(typeFilter)) 
-        : podcastGenre
+    const filteredPodcast = useMemo(() => {
+        return typeFilter
+            ? podcastGenre.filter(cast => cast.genre.includes(typeFilter))
+            : podcastGenre
+    }, [typeFilter, podcastGenre])
 
     function handleFilterChange(key, value) {
         setSearchParams(prevParams => {
@@ -149,8 +155,13 @@ export default function HomePage() {
         })
     }
 
+    const searcFiltertedPodcast = useMemo(() => {
+        return searchValue
+            ? filteredPodcast.filter(cast => cast.title.toLowerCase().includes(searchValue.toLocaleLowerCase()))
+            : filteredPodcast
+    }, [searchValue, filteredPodcast])
 
-    const displayedPodcast = filteredPodcast.map(podcast => (
+    const displayedPodcast = searcFiltertedPodcast.length > 0 ? searcFiltertedPodcast.map(podcast => (
         <Link className="card" key={podcast.id} to={podcast.id}>
             <img src={podcast.image} alt={podcast.title}></img>
             <h1>{podcast.title}</h1>
@@ -160,7 +171,7 @@ export default function HomePage() {
             </h3>
             <p>{podcast.seasons} {podcast.seasons === 1 ? 'Season' : 'Seasons'}</p>
         </Link>
-    ))
+    )) : <h1>No podcast match your search</h1>
 
 
 
@@ -168,8 +179,8 @@ export default function HomePage() {
         <section className="homepage__section">
             <div className="search-sort__container">
             <div className="search_container">
-                    <input type="text" className="user-search"></input>
-                    <button id="search-btn">Search</button>
+                    <input type="text" className="user-search" onChange={handleSearchChange}></input>
+                    {/* Research Levenshtein Distance Algorithm for fuzzy search matching */}
             </div>
 
             <select value={sortValue} onChange={handleChange}>
