@@ -6,29 +6,44 @@ import PodcastDetail from "./Pages/PodcastDetail";
 import { Pause, Play } from 'lucide-react'
 
 export default function AudioPlayer() {
-    const { audioRef, playing, pauseAudio, playAudio, audioState } = useAudio();
+    const { audioRef, playing, pauseAudio, playAudio, audioState} = useAudio();
+    const { isCompletedEpisode, addToCompleted } = useEpisode()
 
     const [currentTime, setCurrentTime] = useState(0)
     const [duration, setDuration] = useState(0)
     
-      const handleRangeChange = (e) => {
-        audioRef.current.currentTime = e.target.value
-        setCurrentTime(e.target.value)
-      };
+ 
+    // Code to determine wether the episode that has finished should be added to local storage or not
+      const episodeExist = audioState.activePodcast ? isCompletedEpisode(audioState.activePodcast.id, audioState.activeSeason, audioState.activeEpisode) : null
 
-      const handleTimeUpdate = () => {
-        setCurrentTime(audioRef.current.currentTime)
-        setDuration(audioRef.current.duration)
+      const handleEnd = () => {
+        if(episodeExist) return
+        
+        addToCompleted(audioState.activePodcast, audioState.activeSeason, audioState.activeEpisode)
       }
 
-      useEffect(() => {
-        if(!audioRef.current) return
-        audioRef.current.addEventListener('timeupdate', handleTimeUpdate)
+
+      const handleRangeChange = (e) => {
+        audioRef.current.currentTime = Number(e.target.value)
+        setCurrentTime(Number(e.target.value))
+      };
+
+    useEffect(() => {
+        const audio = audioRef.current
+        if(!audio) return
+
+        const updateTime = () => setCurrentTime(audio.currentTime)
+        const setAudioDuration = () => setDuration(audio.duration)
+
+        audio.addEventListener('loadedmetadata', setAudioDuration)
+        audio.addEventListener('timeupdate', updateTime)
+        audio.addEventListener('ended', handleEnd)
 
         return () => {
-            audioRef.current.removeEventListener('timeupdate', handleTimeUpdate)
+            audio.removeEventListener('loadedmetadata', setAudioDuration)
+            audio.removeEventListener('timeupdate', updateTime)
         }
-      }, [])
+    } , [audioRef.current] )
 
 
     return audioState.activePodcast ? (
@@ -58,12 +73,11 @@ export default function AudioPlayer() {
                         type="range"
                         className="progress-bar"
                         min = {0}
-                        max = {duration.toString()}
+                        max = {duration}
                         value = {currentTime}
-                        onChange = {(e) => {
-                            handleRangeChange(e)}
-                        }
+                        onChange = {handleRangeChange}
                         />
+
                     <p className="full-time">{duration ? duration.toFixed(0): '0'}</p>
                 </div>
             </div>

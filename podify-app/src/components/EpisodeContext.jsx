@@ -23,34 +23,42 @@ export const EpisodeProvider = ({children}) => {
     },[])
 
     useEffect(() => {
-
-
         localStorage.setItem('favourites', JSON.stringify(favourite))
 
     }, [favourite])
 
 
     useEffect(() => {
-
         localStorage.setItem('completed_episodes', JSON.stringify(episodeFinished))
 
     }, [episodeFinished])
 
-    // Episode Finished Function
 
-    const addToCompleted = (cast, se, ep) => {
+    // Episode Finished Function
+    const addToCompleted = (podcast, se, ep) => {
         const item = {
-            'podcast' : cast,
-            'se' : se,
-            'ep' : ep,
+            'podcast' : podcast,
+            'title' : podcast.title,
+            'season' : se,
+            'image' : podcast.seasons[seasonInput].image,
+            'episode' : ep,
+            'date' : new Date().toLocaleString(),
+            'updated' : podcast.updated
         }
 
         setEpisodeFinished(prev => [...prev, item])
         console.log('Finished episode added')
     }
 
-    // Favourites Function
+    const isCompletedEpisode = (castId, se, ep) => {
+        return episodeFinished.some(item =>
+            item.podcast.id === castId &&
+            item.season === se &&
+            item.episode.episode === ep.episode
+        )
+    }
 
+    // Favourites Function
     const addFavourite = (podcast, se, ep) => {
         const item  = {
             'podcast' : podcast,
@@ -96,6 +104,7 @@ export const EpisodeProvider = ({children}) => {
             removeFavourite,
             isFavourite,
             addToCompleted,
+            isCompletedEpisode,
             }} >
             {children}
         </EpisodeContext.Provider>
