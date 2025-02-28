@@ -541,12 +541,16 @@ header .clear-history {
   color: var(--font-third);
 }
 
+/** Modal Overlay **/
+
 .modal-overlay {
   position: absolute;
   inset: 0;
   background: rgb(0, 0, 0, 0.7);
   z-index: 10;
 }
+
+/** Episode Modal **/
 
 .episode-modal {
   position: fixed;
@@ -564,6 +568,7 @@ header .clear-history {
   gap: 2rem;
 
   width: 60%;
+  color: white;
 }
 
 .active {
@@ -601,15 +606,8 @@ header .clear-history {
   font-size: 2rem;
 }
 
-.episode-modal h2 {
-  color: rgba(255, 255, 255, 0.9);
-}
-
 .episode-modal p {
   line-height: 2;
-}
-
-.episode-modal h3 {
 }
 
 .episode-modal .star {
@@ -656,7 +654,7 @@ header .clear-history {
 
 .progress-bar {
   width: 60%;
-  -webkit-appearance: none; /* Remove default styles */
+  -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 
@@ -685,6 +683,8 @@ header .clear-history {
 .progress-bar::-webkit-slider-thumb:active {
   box-shadow: 0 0 15px var(--accent-main);
 }
+
+/** Favourites Page **/
 
 .favourites-section {
   display: flex;
@@ -719,21 +719,28 @@ header .clear-history {
   text-decoration: none;
   color: white;
   border: solid rgba(255, 255, 255, 0.5) 1px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(40px);
   padding: 1rem;
   border-radius: 15px;
+
+  min-height: 200px;
+  cursor: pointer;
+}
+
+.favourites-section .card:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .favourites-section .card .content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0 1rem;
+  padding: 1rem;
 }
 
 .favourites-section .card img {
-  width: 10%;
+  width: 200px;
   border-radius: 15px;
 }
 
@@ -743,9 +750,9 @@ header .clear-history {
 }
 
 .favourites-section .card > div:last-child {
-  border: solid green;
   display: flex;
   align-items: center;
   gap: 5rem;
   margin-right: 4rem;
+  white-space: nowrap;
 }
