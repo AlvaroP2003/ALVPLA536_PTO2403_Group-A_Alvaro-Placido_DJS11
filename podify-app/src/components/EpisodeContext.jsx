@@ -50,10 +50,12 @@ export const EpisodeProvider = ({children}) => {
         setFavourite(prev => [...prev, item])
     }
 
-    const removeFavourite = (podcast, se , ep) => {
+    console.log(favourite)
+    
+    const removeFavourite = (castId, se , ep) => {
         setFavourite(prev => 
             prev.filter(item => 
-            !(item.id === podcast.id && item.season === se && item.episode.episode === ep.episode)
+            !(item.podcast.id === castId && item.season === se && item.episode.episode === ep.episode)
           )
         );
     }

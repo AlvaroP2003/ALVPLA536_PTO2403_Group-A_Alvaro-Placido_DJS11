@@ -18,6 +18,7 @@ export default function Header() {
             <header>
                 <img className="header-logo" src={headerImage}></img>
 
+                <div>
                 <ul className="navbar">
                     <NavLink className='link ' to='/'
                         style={({ isActive }) => isActive ? activeStyles : null}>
@@ -35,7 +36,7 @@ export default function Header() {
                         <button className="delete-btn clear-history" onClick={() => {clearHistory()}}>Reset Account</button>
                 </div>
 
-
+                </div>
             </header>
         </> 
     )

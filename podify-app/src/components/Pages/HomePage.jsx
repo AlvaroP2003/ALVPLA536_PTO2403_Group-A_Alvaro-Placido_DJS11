@@ -170,7 +170,7 @@ export default function HomePage() {
             <h3>{podcast.seasons} Seasons</h3>
             </div>
         </Link>
-    )) : <h1>No podcast match your search</h1>
+    )) : <h1 className="status-message">No podcast match your search</h1>
 
 
 

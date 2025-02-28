@@ -54,10 +54,10 @@ export default function FavouritesPage() {
     
             switch (sortValue) {
                 case 'a-z':
-                    sorted.sort((a, b) => a.title.localeCompare(b.title));
+                    sorted.sort((a, b) => a.episode.title.localeCompare(b.episode.title));
                     break;
                 case 'z-a':
-                    sorted.sort((a, b) => b.title.localeCompare(a.title));
+                    sorted.sort((a, b) => b.episode.title.localeCompare(a.episode.stitle));
                     break;
                 case 'old-new':
                     sorted.sort((a, b) => new Date(b.updated) - new Date(a.updated));
@@ -92,7 +92,7 @@ export default function FavouritesPage() {
                 </select>
             </div>
             
-            {favourite && favourite.length !== 0 ? favouriteItems : <h1>No Favourites Yet</h1> }
+            {favourite && favourite.length !== 0 ? favouriteItems : <h1 className="status-message">No Favourites Yet</h1> }
 
              {podcast ? (
                 <EpisodeModal 
