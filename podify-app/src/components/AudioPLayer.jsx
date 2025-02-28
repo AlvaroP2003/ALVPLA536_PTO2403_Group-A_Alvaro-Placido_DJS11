@@ -62,7 +62,7 @@ export default function AudioPlayer() {
             <div className="audio-container">
                 <div className="audio-btn">
                     <button className="play-pause-btn" onClick={() => {playing ? pauseAudio() :  playAudio(audioState.activePodcast, audioState.activeSeason, audioState.activeEpisode)}}>
-                        {playing ? <Pause size={30} strokeWidth={2} fill="292929" stroke="none"/> : <Play size={30} strokeWidth={2} fill="292929" stroke="none"/> }
+                        {playing ? <Pause size={30} strokeWidth={1} fill="black" stroke="white"/> : <Play size={30} strokeWidth={1} fill="black" stroke="white"/> }
                     </button>
                 </div>
 

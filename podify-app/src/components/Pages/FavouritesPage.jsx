@@ -34,9 +34,6 @@ export default function FavouritesPage() {
                         <h3>Date Added</h3>
                         <p>{item.date}</p>
                     </div>
-                    <button className="remove-btn" onClick={() => {deleteFavourite(item.id, item.season, item.episode.episode)}}>
-                        Remove
-                    </button>
                 </div>
                
             </div>

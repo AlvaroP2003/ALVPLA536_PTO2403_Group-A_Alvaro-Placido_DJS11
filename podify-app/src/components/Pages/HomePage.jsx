@@ -129,7 +129,7 @@ export default function HomePage() {
                         show.includes(podcast.id) ? genre[index].title : null
            )
            .filter(Boolean)
-           .join(', '),
+           .join('  ·  '),
            'seasons' : podcast.seasons
         }
     }), [sortedPodcast,genre])
@@ -164,12 +164,11 @@ export default function HomePage() {
     const displayedPodcast = searcFiltertedPodcast.length > 0 ? searcFiltertedPodcast.map(podcast => (
         <Link className="card" key={podcast.id} to={podcast.id}>
             <img src={podcast.image} alt={podcast.title}></img>
+            <div className="content">
             <h1>{podcast.title}</h1>
-
-            <h3>
-              {podcast.genre}
-            </h3>
-            <p>{podcast.seasons} {podcast.seasons === 1 ? 'Season' : 'Seasons'}</p>
+            <h2>{podcast.genre}</h2>
+            <h3>{podcast.seasons} Seasons</h3>
+            </div>
         </Link>
     )) : <h1>No podcast match your search</h1>
 
@@ -178,6 +177,7 @@ export default function HomePage() {
     return (
         <section className="homepage__section">
             <div className="search-sort__container">
+
             <div className="search_container">
                     <input type="text" className="user-search"  placeholder ='Search Podcast...' onChange={handleSearchChange}></input>
                     {/* Research Levenshtein Distance Algorithm for fuzzy search matching */}
@@ -207,7 +207,7 @@ export default function HomePage() {
         <div className="homepage-container">
         <h1>{typeFilter ? typeFilter : 'All Podcasts'}</h1>
             <div className="podcast_container">
-                {loading? <h1>Loading...</h1> : error ? <h1>{error.message}</h1> : displayedPodcast}
+                {loading ? <div className="loader"></div> : error ? <h1 className="status-message">{error.message}</h1> : displayedPodcast}
             </div>
         </div>
            

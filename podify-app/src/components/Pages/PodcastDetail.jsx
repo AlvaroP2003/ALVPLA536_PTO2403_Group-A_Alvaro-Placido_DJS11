@@ -55,7 +55,8 @@ export default function PodcastDetail() {
 
         const sumEpisodes = totalEpisodes.reduce((acc, num) => acc + num, 0);
 
-        if(loading) return <h1>Loading...</h1>
+        if(loading) return <div className ='loader'></div>
+        if(error) return <h1 className ='status-message'>{error.message}</h1>
 
         return (
             <>
