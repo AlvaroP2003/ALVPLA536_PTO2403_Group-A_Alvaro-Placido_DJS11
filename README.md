@@ -43,15 +43,6 @@ Podify can be deployed to platforms like Netlify or Vercel. Make sure to set up 
 - **Build command:** `npm run build`  
 - **Publish directory:** `dist`  
 
-## Contributing 🤝  
-We welcome contributions! To contribute:  
-
-1. Fork the repository  
-2. Create a new branch (`git checkout -b feature-branch`)  
-3. Commit your changes (`git commit -m "Add new feature"`)  
-4. Push to the branch (`git push origin feature-branch`)  
-5. Open a Pull Request  
-
 ## Contact ME 📝  
  - **Email:** alvaroplacido20032003@gmail.com
 
