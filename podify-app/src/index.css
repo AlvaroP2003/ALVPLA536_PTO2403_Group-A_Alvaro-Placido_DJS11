@@ -93,6 +93,11 @@ section {
   border-radius: 15px;
 }
 
+.main-audio .season-episode_container {
+  display: flex;
+  gap: 1rem;
+}
+
 .play-pause-btn {
   display: flex;
   justify-content: center;
@@ -121,11 +126,15 @@ header {
 
   background-color: var(--background-secondary);
 
-  height: 10vh;
+  height: 15vh;
 }
 
 header > * {
   cursor: pointer;
+}
+
+.header-logo {
+  width: 200px;
 }
 
 header .search_container {

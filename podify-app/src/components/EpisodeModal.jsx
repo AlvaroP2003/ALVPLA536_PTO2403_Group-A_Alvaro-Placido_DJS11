@@ -10,8 +10,9 @@ export default function EpisodeModal({podcast, seasonInput, episode, modalOpen, 
     const { isFavourite, addFavourite, removeFavourite} = useEpisode()
 
      const favourite = isFavourite(podcast.id, seasonInput, episode)
+
     
-        function onFavourite(e) {
+        function onFavourite() {
             if(favourite) removeFavourite(podcast.id, seasonInput , episode)
                 else addFavourite(podcast, seasonInput, episode)
         }
@@ -31,7 +32,7 @@ export default function EpisodeModal({podcast, seasonInput, episode, modalOpen, 
                 <h3>From : {podcast.title}</h3>
                 </div>
 
-                <button className="star" onClick ={() => {onFavourite(podcast.id)}}>{favourite ? <Star size={40} strokeWidth={1} stroke = 'none' fill="white" /> : <Star size={40} strokeWidth={1} stroke="white"/> }</button>
+                <button className="star" onClick ={() => {onFavourite()}}>{favourite ? <Star size={40} strokeWidth={1} stroke = 'none' fill="white" /> : <Star size={40} strokeWidth={1} stroke="white"/> }</button>
             </div> 
 
             <div className="audio-container">

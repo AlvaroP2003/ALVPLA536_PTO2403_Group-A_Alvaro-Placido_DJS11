@@ -34,29 +34,6 @@ export const EpisodeProvider = ({children}) => {
     }, [episodeFinished])
 
 
-    // Episode Finished Function
-    const addToCompleted = (podcast, se, ep) => {
-        const item = {
-            'podcast' : podcast,
-            'title' : podcast.title,
-            'season' : se,
-            'image' : podcast.seasons[seasonInput].image,
-            'episode' : ep,
-            'date' : new Date().toLocaleString(),
-            'updated' : podcast.updated
-        }
-
-        setEpisodeFinished(prev => [...prev, item])
-        console.log('Finished episode added')
-    }
-
-    const isCompletedEpisode = (castId, se, ep) => {
-        return episodeFinished.some(item =>
-            item.podcast.id === castId &&
-            item.season === se &&
-            item.episode.episode === ep.episode
-        )
-    }
 
     // Favourites Function
     const addFavourite = (podcast, se, ep) => {
@@ -71,7 +48,6 @@ export const EpisodeProvider = ({children}) => {
         }
 
         setFavourite(prev => [...prev, item])
-        console.log('added!')
     }
 
     const removeFavourite = (podcast, se , ep) => {
@@ -80,7 +56,6 @@ export const EpisodeProvider = ({children}) => {
             !(item.id === podcast.id && item.season === se && item.episode.episode === ep.episode)
           )
         );
-        console.log('removed')      
     }
 
     const isFavourite = (castId, se, ep) => {
@@ -90,6 +65,31 @@ export const EpisodeProvider = ({children}) => {
             item.episode.episode === ep.episode
         )
     }
+
+       // Episode Finished Function
+       const addToCompleted = (podcast, se, ep) => {
+        const item = {
+            'podcast' : podcast,
+            'title' : podcast.title,
+            'season' : se,
+            'image' : podcast.seasons[seasonInput].image,
+            'episode' : ep,
+            'updated' : podcast.updated
+        }
+
+        setEpisodeFinished(prev => [...prev, item])
+        console.log('Finished episode added')
+        console.log(episodeFinished)
+    }
+
+    const isCompletedEpisode = (castId, se, ep) => {
+        return episodeFinished.some(item =>
+            item.podcast.id === castId &&
+            item.season === se &&
+            item.episode.episode === ep.episode
+        )
+    }
+
 
     return (
         <EpisodeContext.Provider

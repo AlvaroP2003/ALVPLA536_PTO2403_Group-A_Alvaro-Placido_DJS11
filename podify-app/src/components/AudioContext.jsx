@@ -29,22 +29,13 @@ export const AudioProvider = ({ children }) => {
 
         }
 
-    }, [podcast, seasonInput, episode, playing])
+    }, [episode,playing])
 
 
     const playAudio = (podcast, se, ep) => {
 
-        setAudioState({
-            activePodcast : podcast,
-            activeSeason : se,
-            activeEpisode : ep,
-        })
-
         // Play new cast
         if(audioRef.current && !sameElement) {
-            audioRef.current.pause()
-            audioRef.current.currentTime = 0
-
             audioRef.current.src = podcast ? podcast.seasons[se].episodes[ep.episode -1].file : null
             audioRef.current.load()
             console.log('new cast')
@@ -54,9 +45,14 @@ export const AudioProvider = ({ children }) => {
             audioRef.current.play()
             setPlaying(true)
             console.log('play')
-            console.log(sameElement)
         }
 
+              
+        setAudioState({
+            activePodcast : podcast,
+            activeSeason : se,
+            activeEpisode : ep,
+        })
     }
 
     const pauseAudio = () => {

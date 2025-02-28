@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { CircleUserRound } from 'lucide-react'
-
+import headerImage from '../assets/Images/Podify_main.png'
 
 export default function Header() {
     const activeStyles = {
@@ -16,7 +16,7 @@ export default function Header() {
     return (
         <>
             <header>
-                <img className="header-logo" src=""></img>
+                <img className="header-logo" src={headerImage}></img>
 
                 <ul className="navbar">
                     <NavLink className='link ' to='/'
@@ -26,7 +26,7 @@ export default function Header() {
 
                     <NavLink className="link" to='favourites'
                         style={({ isActive }) => isActive ? activeStyles : null}>
-                        FAVOURTIES
+                        FAVOURITES
                     </NavLink>
                 </ul>
 

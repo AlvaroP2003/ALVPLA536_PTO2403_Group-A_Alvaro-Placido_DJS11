@@ -14,14 +14,13 @@ export default function AudioPlayer() {
     
  
     // Code to determine wether the episode that has finished should be added to local storage or not
-      const episodeExist = audioState.activePodcast ? isCompletedEpisode(audioState.activePodcast.id, audioState.activeSeason, audioState.activeEpisode) : null
+      const episodeExist = audioState.activePodcast && audioState.activeSeason && audioState.activeEpisode ? isCompletedEpisode(audioState.activePodcast.id, audioState.activeSeason, audioState.activeEpisode) : null
 
-      const handleEnd = () => {
-        if(episodeExist) return
-        
+      function handleEnd(){
+        if(episodeExist) return;
+
         addToCompleted(audioState.activePodcast, audioState.activeSeason, audioState.activeEpisode)
       }
-
 
       const handleRangeChange = (e) => {
         audioRef.current.currentTime = Number(e.target.value)
@@ -52,6 +51,7 @@ export default function AudioPlayer() {
                 <img src={audioState.activePodcast.seasons[audioState.activeSeason].image} alt="Season Cover" />
                 <div className="content">
                     <h1>{audioState.activeEpisode.title}</h1>
+                    <div className="season-episode_container"><p>S : {audioState.activeSeason + 1}</p><p>E : {audioState.activeEpisode.episode}</p></div>
                     <h3>{audioState.activePodcast.title}</h3>
                 </div>
             </div>
