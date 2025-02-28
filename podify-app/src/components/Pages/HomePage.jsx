@@ -113,12 +113,10 @@ export default function HomePage() {
     }, [])
 
 
-    // Helper map to retrun only the shows id
     const genreShows = genre.map(item => (
         item.shows
     ))
 
-    // Returns a new object to make rendering, filtering and sorting easier
     const podcastGenre = useMemo(() => sortedPodcast.map(podcast => {
         return {
             'id' : podcast.id,
@@ -135,8 +133,6 @@ export default function HomePage() {
     }), [sortedPodcast,genre])
 
 
-
-    // Filter Functions 
 
     const filteredPodcast = useMemo(() => {
         return typeFilter

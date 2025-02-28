@@ -13,7 +13,6 @@ export default function AudioPlayer() {
     const [duration, setDuration] = useState(0)
     
  
-    // Code to determine wether the episode that has finished should be added to local storage or not
       const episodeExist = audioState.activePodcast && audioState.activeSeason && audioState.activeEpisode ? isCompletedEpisode(audioState.activePodcast.id, audioState.activeSeason, audioState.activeEpisode) : null
 
       function handleEnd(){

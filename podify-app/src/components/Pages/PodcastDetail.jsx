@@ -1,9 +1,6 @@
-import {React, useRef} from "react";
-
+import {React} from "react";
 import { useState, useEffect } from "react";
 import { useParams, Link } from 'react-router-dom'
-import AudioPlayer from "../AudioPLayer";
-import { useAudio } from "../AudioContext";
 import { useEpisode } from "../EpisodeContext";
 import EpisodeModal from "../EpisodeModal";
 import { ChevronLeft } from "lucide-react";

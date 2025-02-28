@@ -545,9 +545,13 @@ header .clear-history {
 
 .modal-overlay {
   position: absolute;
-  inset: 0;
+  height: 100%;
+  width: 100%;
   background: rgb(0, 0, 0, 0.7);
   z-index: 10;
+
+  left: 0;
+  top: 0;
 }
 
 /** Episode Modal **/

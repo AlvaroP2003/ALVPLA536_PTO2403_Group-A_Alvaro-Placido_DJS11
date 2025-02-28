@@ -18,7 +18,6 @@ export const AudioProvider = ({ children }) => {
 
     const [sameElement,setSameElement] = useState(false)
  
-    // Hook to monitor if the active element (podcast that is playing) matches the element the user is viewing
     useEffect(() => {
         if(audioState.activePodcast) {
             const samePodcast = audioState.activePodcast.id === podcast.id
@@ -34,7 +33,6 @@ export const AudioProvider = ({ children }) => {
 
     const playAudio = (podcast, se, ep) => {
 
-        // Play new cast
         if(audioRef.current && !sameElement) {
             audioRef.current.src = podcast ? podcast.seasons[se].episodes[ep.episode -1].file : null
             audioRef.current.load()
@@ -79,5 +77,3 @@ export const AudioProvider = ({ children }) => {
 };
 
 export const useAudio = () => useContext(AudioContext);
-
-// Fix play and pause button/

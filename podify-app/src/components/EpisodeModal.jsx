@@ -3,7 +3,7 @@ import { useEpisode } from "./EpisodeContext";
 import { useAudio } from "./AudioContext";
 import { ChevronLeft } from "lucide-react";
 
-import { Pause, Play, Star } from 'lucide-react'
+import {Play, Star } from 'lucide-react'
 
 export default function EpisodeModal({podcast, seasonInput, episode, modalOpen, setModalOpen}) {
 

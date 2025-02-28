@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import EpisodeModal from "../EpisodeModal";
 
 export default function FavouritesPage() {
-    const { favourite, setFavourite, removeFavourite,episode, setEpisode, podcast, setPodcast, seasonInput, setSeasonInput } = useEpisode()
+    const { favourite, setFavourite,episode, setEpisode, podcast, setPodcast, seasonInput, setSeasonInput } = useEpisode()
     const [sortValue, setSortValue] = useState('a-z')
     const [modalOpen, setModalOpen] = useState(false)
 
@@ -38,12 +38,7 @@ export default function FavouritesPage() {
                
             </div>
             
-        ));
-
-    function deleteFavourite(itemId, se, ep) {
-        setFavourite(prev => prev.filter(item => !(item.id === itemId && item.season === se && item.episode.episode === ep)))
-    }
-    
+        ));    
 
     function clearFavourites() {
         setFavourite([])
@@ -107,7 +102,4 @@ export default function FavouritesPage() {
         </section>
     );
 }
-
-
-// SeasonInput is not being read
 
