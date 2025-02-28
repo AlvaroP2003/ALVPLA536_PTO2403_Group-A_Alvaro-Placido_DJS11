@@ -47,23 +47,23 @@ export default function AudioPlayer() {
 
     return audioState.activePodcast ? (
          <div className="main-audio">
+
             <div className="current-episode">
                 <img src={audioState.activePodcast.seasons[audioState.activeSeason].image} alt="Season Cover" />
                 <div className="content">
                     <h1>{audioState.activeEpisode.title}</h1>
-                    <div className="season-episode_container"><p>S : {audioState.activeSeason + 1}</p><p>E : {audioState.activeEpisode.episode}</p></div>
+                    <div className="season-episode_container"><p>S:{audioState.activeSeason + 1}</p><p>E:{audioState.activeEpisode.episode}</p></div>
                     <h3>{audioState.activePodcast.title}</h3>
                 </div>
             </div>
+
             <audio ref={audioRef} id="music-bar"></audio>
 
             <div className="audio-container">
                 <div className="audio-btn">
-                    <button className="prev-btn">prev</button>
                     <button className="play-pause-btn" onClick={() => {playing ? pauseAudio() :  playAudio(audioState.activePodcast, audioState.activeSeason, audioState.activeEpisode)}}>
-                        {playing ? <Pause size={30} strokeWidth={2} /> : <Play size={30} strokeWidth={2} /> }
+                        {playing ? <Pause size={30} strokeWidth={2} fill="292929" stroke="none"/> : <Play size={30} strokeWidth={2} fill="292929" stroke="none"/> }
                     </button>
-                    <button className="next-btn">next</button>
                 </div>
 
                 <div className="progress-container">

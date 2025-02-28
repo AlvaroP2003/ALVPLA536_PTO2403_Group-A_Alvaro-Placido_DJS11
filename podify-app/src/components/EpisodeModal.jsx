@@ -38,7 +38,7 @@ export default function EpisodeModal({podcast, seasonInput, episode, modalOpen, 
             <div className="audio-container">
                     <div className="audio-btn">
                         <button className="play-pause-btn" onClick={() => {playing && sameElement ? pauseAudio() :  playAudio(podcast, seasonInput, episode)}}>
-                        {playing && sameElement ? <Pause size={30} strokeWidth={1}/> : <Play size={30} strokeWidth={1} /> }
+                        {playing && sameElement ? <Pause size={30} strokeWidth={1} fill="292929" stroke="none" /> : <Play size={30} strokeWidth={1} fill="292929" stroke="none" /> }
                         </button>
                     </div>
             </div>

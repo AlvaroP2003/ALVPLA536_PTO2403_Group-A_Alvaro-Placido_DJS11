@@ -183,7 +183,7 @@ export default function HomePage() {
                     {/* Research Levenshtein Distance Algorithm for fuzzy search matching */}
             </div>
 
-            <select value={sortValue} onChange={handleChange}>
+            <select value={sortValue} onChange={handleChange} className="dropdown">
                     <option value="a-z"> A - Z</option>
                     <option value="z-a">Z - A</option>
                     <option value="new-old">Old to new</option>

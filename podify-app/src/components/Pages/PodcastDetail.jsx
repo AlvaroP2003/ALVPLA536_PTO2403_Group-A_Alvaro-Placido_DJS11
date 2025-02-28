@@ -6,6 +6,7 @@ import AudioPlayer from "../AudioPLayer";
 import { useAudio } from "../AudioContext";
 import { useEpisode } from "../EpisodeContext";
 import EpisodeModal from "../EpisodeModal";
+import { ChevronLeft } from "lucide-react";
 
 
 export default function PodcastDetail() {
@@ -64,26 +65,27 @@ export default function PodcastDetail() {
                         backgroundImage: podcast ? `url(${podcast.image})` : 'none'
                     }}
                     >
+
                     <main>
-                    <Link className="back-btn" to = '/.'> Back </Link>
+                    <Link className="back-btn" to = '/.'> <ChevronLeft strokeWidth={1.25} /> </Link>
     
                         <h1>{podcast.title}</h1>
-                        <h3>{podcast.genres?.join(", ")}</h3>
+                        <h2>{podcast.genres?.join("  ·  ")}</h2>
     
                         <div className="main-content">
                             <img src={podcast.image}></img>
                             <div className="side-content">
-                                <h3>{season ? `${season.length} Seasons ${sumEpisodes} Episodes` : 0} </h3>
+                                <h3>{season ? `${season.length} Seasons  ·  ${sumEpisodes} Episodes` : 0} </h3>
                                 <p>{podcast.description}</p>
                             </div>
                         </div>
     
-                        <p>Last Updated : {podcast.updated ? podcast.updated.slice(0, 10) : null}</p> // Returns null!
+                        <p>Last Updated : {podcast.updated ? podcast.updated.slice(0, 10) : null}</p>
                     </main>
     
                     <div className="seasons-episodes__section"> 
                         <div>
-                            <select id="options" value={seasonInput} onChange={handleChange}>
+                            <select id="options" className ='dropdown' value={seasonInput} onChange={handleChange}>
                             {season && season.length > 0 ? (
                                 season.map((season, index) => (
                                     <option key={index} value={index}>
@@ -139,6 +141,3 @@ export default function PodcastDetail() {
             </>
         )
     }
-
-
-    // .play() function is interupted by .load() function !!!
