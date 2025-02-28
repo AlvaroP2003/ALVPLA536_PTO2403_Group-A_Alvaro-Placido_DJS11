@@ -17,7 +17,6 @@ export default function Header() {
         <>
             <header>
                 <img className="header-logo" src={headerImage}></img>
-
                 <div>
                 <ul className="navbar">
                     <NavLink className='link ' to='/'

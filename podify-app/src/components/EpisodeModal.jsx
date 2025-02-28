@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useEpisode } from "./EpisodeContext";
 import { useAudio } from "./AudioContext";
+import { ChevronLeft } from "lucide-react";
 
 import { Pause, Play, Star } from 'lucide-react'
 
@@ -22,6 +23,7 @@ export default function EpisodeModal({podcast, seasonInput, episode, modalOpen, 
     {modalOpen ? (<div className='modal-overlay'  onClick= {()=> {setModalOpen(false)}}></div>) : null }
                         
         {modalOpen ? (<div className= 'episode-modal'>
+            <button className="modal-close-btn" onClick={() => {setModalOpen(false)}}><ChevronLeft strokeWidth={1.25} /></button>
             <img src = {podcast.seasons[seasonInput ?? 0].image} />
                 <div className="content">
                     <div className="header">
@@ -35,7 +37,7 @@ export default function EpisodeModal({podcast, seasonInput, episode, modalOpen, 
                     <div className="audio-container">
                         <div className="audio-btn">
                             <button className="play-pause-btn" onClick={() => {playing && sameElement ? pauseAudio() :  playAudio(podcast, seasonInput, episode)}}>
-                            {playing && sameElement ? <Pause size={30} strokeWidth={1} fill="black" stroke="white" /> : <Play size={30} strokeWidth={1} fill="black" stroke="white" /> }
+                            <Play size={30} strokeWidth={1} fill="black" stroke="white" />
                             </button>
                         </div>
                     </div>

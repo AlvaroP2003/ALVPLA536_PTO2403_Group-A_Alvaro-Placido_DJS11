@@ -50,7 +50,7 @@ export default function HomePage() {
 
         fetchData()
 
-    }, [])
+    },[])
 
     useEffect(() => {
         let sorted = [...podcast];
@@ -207,7 +207,7 @@ export default function HomePage() {
         <div className="homepage-container">
         <h1>{typeFilter ? typeFilter : 'All Podcasts'}</h1>
             <div className="podcast_container">
-                {loading ? <div className="loader"></div> : error ? <h1 className="status-message">{error.message}</h1> : displayedPodcast}
+                {loading ? <div className="loader"></div> : error ? <h1 className="status-message">Could not fetch podcast data</h1> : displayedPodcast}
             </div>
         </div>
            

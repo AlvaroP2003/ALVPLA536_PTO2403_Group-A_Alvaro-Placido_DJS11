@@ -1,0 +1,246 @@
+@media only screen and (max-width: 900px) {
+
+    section {
+        padding: 1rem;
+    }
+
+    .status-message {
+        width: 100%;
+    }
+
+    .homepage-container .loader {
+        top: 150%;
+    }
+
+    .delete-btn {
+        font-size: .8rem;
+        padding: .5rem;
+    }
+
+    .dropdown {
+        font-size: .8rem;
+        height: 35px;
+        width: 100px;
+    }
+
+    .main-audio {
+        padding: 1rem;
+        height: 10vh;
+    }
+
+    .main-audio .current-episode {
+        width: 100%;
+    }
+
+    .main-audio .current-episode h1 {
+        font-size: 1rem;
+    }
+
+    .main-audio .current-episode h3 {
+        font-size: .8rem;
+    }
+
+    .main-audio .season-episode_container {
+        display: none;
+    }
+
+
+    .main-audio .audio-container {
+        width: 100%;
+        right: 0;
+        bottom: 0;
+    }
+
+    .main-audio .audio-container .audio-btn {
+        position: absolute;
+        right: 1rem;
+    }
+
+    .main-audio .audio-container .progress-container {
+        display: none;
+    }
+
+    header {
+      flex-direction: column;
+      gap: 2rem;
+      height: fit-content;
+      padding: 1rem;
+    }
+
+    header .link {
+        font-size: .8rem;
+    }
+
+    .search-sort__container input {
+        font-size: .8rem;
+    }
+
+    .podcast_container {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .filter-container {
+        overflow-x: scroll;
+    }
+
+    .filter-container ul li {
+        font-size: .8rem;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .homepage-container h1 {
+        font-size:1.5rem;
+        padding: 1rem;
+    }
+
+    .homepage-container .card .content {
+        display: none;
+    }
+
+    .podcast-detail {
+        flex-direction: column;
+        overflow: normal;
+        height: fit-content;
+    }
+
+    .podcast-detail .back-btn {
+        top: 1rem;
+        left: 1rem;
+    }
+
+    .podcast-detail main {
+        flex-direction: column;
+        padding: 4rem 1rem;
+
+        border-right: none;
+        gap: 1rem;
+    }
+
+    .podcast-detail main h1 {
+        font-size: 1.5rem;
+    }
+
+    .podcast-detail main h2 {
+        font-size: 1rem;
+    }
+
+    .podcast-detail .main-content {
+        flex-direction: column;
+    }
+
+    .podcast-detail .main-content img {
+        width: 100%;
+        height: auto;
+    }
+
+    .podcast-detail .side-content {
+        align-items: center;
+    }
+
+    .seasons-episodes__section > h2 {
+        font-size: 1rem;
+    }
+
+    .episode_container {
+        overflow-y: normal;
+    }
+
+    .episode_container .card img {
+        width: 50%;
+    }
+
+    .episode_container > .card p {
+        display: none;
+      }
+
+    .modal-close-btn {
+        width: 50px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        color: white;
+        border: none;
+    }
+
+    .episode-modal {
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        padding: 1rem 1rem 5rem 1rem;
+        overflow: scroll;
+    }
+
+    .episode-modal h1 {
+        font-size: 1.5rem;
+    }
+
+    .episode-modal h2 {
+        font-size: 1rem;
+    }
+
+    .episode-modal h3 {
+        font-size: 1rem;
+    }
+
+    .episode-modal img  {
+        width: 100%;
+    }
+
+    .episode-modal .audio-btn {
+        position: relative;
+        bottom: 0;
+        left: 0;
+    }
+
+    .favourites-section h1 {
+        font-size: 1rem;
+    }
+
+    .favourites-header {
+        flex-direction: column;
+        padding: 1rem;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .favourites-header > div {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .favourites-header .dropdown {
+        align-self: flex-end;
+    }
+
+    .favourites-section .card h1 {
+        font-size: 1rem;
+    }
+
+    .favourites-section .card h2 {
+        display: none;
+    }
+
+    .favourites-section .card h3 {
+        font-size: 1rem;
+    }
+
+    .favourites-section .card img {
+        width: 40%;
+    }
+
+    .favourites-section .content {
+        width: 100%;
+    }
+
+    .favourites-section .card > div:last-child {
+        display: none;
+    }
+
+  }

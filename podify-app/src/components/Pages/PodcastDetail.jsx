@@ -60,6 +60,7 @@ export default function PodcastDetail() {
 
         return (
             <>
+            {loading ? <div className ='loader'></div> : error ? <h1 className ='status-message'>Error Recovering Podcast Data</h1> :
                  <section
                     className="podcast-detail"
                     style = {{
@@ -139,6 +140,7 @@ export default function PodcastDetail() {
                    
 
                 </section>
+                }
             </>
         )
     }
