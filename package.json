@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "lucide-react": "^0.476.0"
+  },
+  "scripts" : {
+    "build" : "vite build"
   }
 }
